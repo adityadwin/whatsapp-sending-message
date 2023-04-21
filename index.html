@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kirim Pesan WhatsApp</title>
+	<style type="text/css">
+		form {
+			max-width: 500px;
+			margin: 0 auto;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 5px;
+		}
+
+		input[type=text], textarea {
+			padding: 10px;
+			width: 100%;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			margin-bottom: 20px;
+			resize: vertical;
+		}
+
+		button[type=submit] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		button[type=submit]:hover {
+			background-color: #45a049;
+		}
+	</style>
+</head>
+<body>
+	<form id="myForm" onsubmit="sendWhatsappMessage()">
+		<label for="name">Nama:</label>
+		<input type="text" id="name" name="name" required>
+
+		<label for="message">Pesan:</label>
+		<textarea id="message" name="message" required></textarea>
+
+		<button type="submit">Kirim Pesan</button>
+	</form>
+
+	<script type="text/javascript">
+		function sendWhatsappMessage() {
+			var name = document.getElementById("name").value;
+			var message = document.getElementById("message").value;
+			var url = "https://api.whatsapp.com/send?phone=628818665402&text=Halo%20" + name + ",%20" + message;
+
+			window.open(url, '_blank');
+			document.getElementById("myForm").reset();
+			return false;
+		}
+	</script>
+</body>
+</html>
